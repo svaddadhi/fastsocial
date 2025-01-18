@@ -1,0 +1,91 @@
+[tool.pylint]
+init-hook = '''
+import sys
+import os
+from pathlib import Path
+
+# Get the absolute path to the virtualenv site-packages
+venv_base = Path("fastapienv/lib/python3.9").resolve()
+if venv_base.exists():
+    # Add both site-packages and pure-Python packages
+    sys.path.extend([
+        str(venv_base / "site-packages"),
+        str(venv_base),
+    ])
+
+# Add project paths
+project_root = Path(".").resolve()
+sys.path.extend([
+    str(project_root),
+    str(project_root / "app"),
+    str(project_root / "app/routers"),
+])
+'''
+
+# Specify where to look for imported modules
+ignore-paths = ["tests", "fastapienv"]
+ignore-patterns = ["^\\.#"]
+
+# Analysis settings
+suggestion-mode = true
+analyse-fallback-blocks = true
+recursive = true
+
+# Python path settings
+python-paths = [
+    "./fastapienv/lib/python3.9/site-packages",
+    "./fastapienv/lib/python3.9",
+    ".",
+    "./app",
+    "./app/routers"
+]
+python-path = "./fastapienv/bin/python"
+
+# Disable specific messages
+disable = [
+    "C0114",  # missing-module-docstring
+    "C0115",  # missing-class-docstring
+    "C0116",  # missing-function-docstring
+    "C0411",  # wrong-import-order
+    "C0103",  # invalid-name
+    "R0903",  # too-few-public-methods
+    "W0611",  # unused-import
+]
+
+# Import settings
+allow-any-import-level = true
+ignore-imports = false
+
+# Environment settings
+env-paths = [
+    "fastapienv/lib/python3.9/site-packages",
+    "fastapienv/lib/python3.9"
+]
+
+[tool.pyright]
+venvPath = "."
+venv = "fastapienv"
+pythonVersion = "3.9"
+pythonPlatform = "Linux"
+extraPaths = [
+    "./fastapienv/lib/python3.9/site-packages",
+    "./fastapienv/lib/python3.9",
+    ".",
+    "./app",
+    "./app/routers"
+]
+reportOptionalMemberAccess = "none"
+reportUnusedImport = false
+reportUnreachableCode = false
+reportAttributeAccessIssue = false
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
+force_single_line = true
+lines_between_types = 1

@@ -1,0 +1,11 @@
+{
+  "venvPath": ".",
+  "venv": "fastapienv",
+  "extraPaths": [".", "./routers"],
+  "analysis": {
+    "autoImportCompletions": true,
+    "useLibraryCodeForTypes": true,
+    "diagnosticMode": "workspace",
+    "autoSearchPaths": true
+  }
+}
