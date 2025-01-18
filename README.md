@@ -28,7 +28,7 @@ Things to build upon to improve/features to implement to keep learning:
 
 ### Features to Add
 
-- [ ] Comments system for posts
+- [ ] Comments system for posts (In Progress)
 - [ ] Hashtag parsing and searching
 - [ ] Feed generation algorithm
 - [ ] Direct messaging system
