@@ -38,6 +38,15 @@ class Posts(Base):
     likes = Column(Integer, default=0)
 
 
+class Comments(Base):
+    __tablename__ = "comments"
+
+    id = Column(Integer, primary_key=True, index=True)
+    content = Column(String, nullable=False)
+    original_post = Column(Integer, ForeignKey("posts.id"))
+    ownder_id = Column(Integer, ForeignKey("users.id"))
+
+
 class Relationships(Base):
     __tablename__ = "relationships"
 
